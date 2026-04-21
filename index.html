@@ -1,0 +1,204 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FF Proxy Premium</title>
+    
+    <script src="https://doubtfulimpatient.com/8c/3c/63/8c3c63377f3f80fb030f3b29b3c02c4b.js"></script>
+
+    <style>
+        :root {
+            --glass: rgba(255, 255, 255, 0.1);
+            --neon: #00f2fe;
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            background: #000; color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* MATRIX CANVAS */
+        #matrix-canvas {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+        }
+
+        #splash {
+            position: fixed; inset: 0;
+            background: #000;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            z-index: 9999; transition: 0.8s;
+        }
+
+        .logo img { width: 100px; border-radius: 20px; box-shadow: 0 0 20px var(--neon); }
+
+        #main-app {
+            display: none; min-height: 100vh;
+            background: transparent;
+            padding: 20px; box-sizing: border-box; text-align: center;
+            position: relative; z-index: 5; 
+        }
+
+        .glass-card {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 40px; padding: 25px;
+            max-width: 400px; margin: 10px auto;
+            position: relative;
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+            border: none; padding: 18px; border-radius: 50px;
+            color: white; font-weight: 900; width: 100%;
+            font-size: 1.1rem; cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 242, 254, 0.4);
+            text-transform: uppercase;
+        }
+
+        .btn-premium:disabled { background: #333; opacity: 0.6; cursor: not-allowed; }
+
+        .social-box { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 15px; }
+        .social-btn {
+            text-decoration: none; color: white; font-size: 0.75rem;
+            padding: 8px 12px; border-radius: 15px; border: 1px solid var(--neon);
+            background: rgba(0,0,0,0.6); font-weight: bold;
+        }
+
+        .highlight-msg {
+            color: #ff4747; background: rgba(255, 255, 255, 0.05);
+            padding: 12px; border-radius: 15px; font-weight: bold;
+            margin-bottom: 15px; border: 1px dashed #ff4747;
+            font-size: 0.85rem; line-height: 1.4;
+        }
+
+        .banner-fixed {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            height: 60px; background: #000; z-index: 100;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .step-txt { color: var(--neon); font-weight: bold; margin-bottom: 15px; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix-canvas"></canvas>
+
+    <div id="splash">
+        <div class="logo"><img src="animation.png"></div>
+        <h2 style="margin-top:20px; letter-spacing:5px;">GETIX PROXY</h2>
+    </div>
+
+    <div id="main-app">
+        <div class="glass-card">
+            <img src="proxy.png" style="width:100%; border-radius:20px; margin-bottom:15px;">
+            
+            <div class="highlight-msg">
+                🔥 Bhai log Pura 10 ads Dekh lo phir proxy server Ka download link mil jayega!
+            </div>
+
+            <h2 style="margin:0 0 10px 0; font-size: 1.4rem;">VIP SERVER ACCESS</h2>
+            <div class="step-txt" id="statusText">STEP: 1/10</div>
+            
+            <button id="mainBtn" class="btn-premium" onclick="openStep()">ACTIVATE (WATCH AD)</button>
+
+            <div class="social-box">
+                <a href="https://t.me/+wXSdUwvo7vYyMWM9" class="social-btn">Telegram 1</a>
+                <a href="https://t.me/Getixpanel2" class="social-btn">Telegram 2</a>
+                <a href="https://youtube.com/@getixpanelofficial?si=hc-BbaSAWFFXy1sG" class="social-btn">YouTube</a>
+            </div>
+        </div>
+
+        <div style="height: 100px;"></div> 
+        <div class="banner-fixed">
+            <script type="text/javascript">
+                atOptions = { 'key' : 'deb5d5480e39c429d0e434cec0dbe8f2', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/deb5d5480e39c429d0e434cec0dbe8f2/invoke.js"></script>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.onresize = resizeCanvas;
+        resizeCanvas();
+        const characters = "01010101ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const fontSize = 16;
+        const columns = Math.floor(canvas.width / fontSize);
+        const drops = Array(columns).fill(1);
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.1)"; 
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00f2fe";
+            ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 35);
+
+        let currentStep = 1;
+        const totalSteps = 10;
+        const sLink = "https://www.profitablecpmratenetwork.com/cs2ti6sdua?key=42e96bc56f5bc6e92194b6778b1a8995";
+        const finalDownloadLink = "https://www.mediafire.com/file/nmvsd071j99gfcw/ASTUTE+BETA+OB53.apk/file";
+
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById('splash').style.display = 'none';
+                document.getElementById('main-app').style.display = 'block';
+            }, 4000);
+        };
+
+        function openStep() {
+            const btn = document.getElementById('mainBtn');
+            const status = document.getElementById('statusText');
+
+            if (currentStep > totalSteps) {
+                window.location.href = finalDownloadLink;
+                return;
+            }
+
+            window.open(sLink, '_blank');
+            
+            btn.disabled = true;
+            btn.innerText = "VERIFYING...";
+
+            setTimeout(() => {
+                if (currentStep < totalSteps) {
+                    let timer = 30; 
+                    let countdown = setInterval(() => {
+                        btn.innerText = `WAIT ${timer}S`;
+                        status.innerText = `STEP: ${currentStep}/${totalSteps}`;
+                        timer--;
+                        if (timer < 0) {
+                            clearInterval(countdown);
+                            currentStep++;
+                            btn.disabled = false;
+                            btn.innerText = "ACTIVATE NEXT STEP";
+                            status.innerText = `STEP: ${currentStep}/${totalSteps}`;
+                        }
+                    }, 1000);
+                } else {
+                    currentStep++;
+                    status.innerText = "SERVER READY ✅";
+                    btn.innerText = "DOWNLOAD APK NOW";
+                    btn.disabled = false;
+                    btn.style.background = "linear-gradient(135deg, #00ff88, #00bd68)";
+                }
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
